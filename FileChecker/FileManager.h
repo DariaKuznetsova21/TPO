@@ -9,7 +9,7 @@ class FileManager : public QObject
     QVector<FileChecker> files;
 public:
     FileManager();
-    void addNewFile(QFileInfo& newFileInfo);
+    void addNewFile(QString &newFileInfo);
     void startToObserve();
     bool changedExistance(QFileInfo& file, FileChecker& oldFile);
     bool changedFile(QFileInfo& file, FileChecker& oldFile);

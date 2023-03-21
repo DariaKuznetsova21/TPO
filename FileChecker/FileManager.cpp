@@ -7,7 +7,7 @@ FileManager::FileManager()
     connect(this, &FileManager::fileChanged, &Notifier::changeFile);
 }
 
-void FileManager::addNewFile(QFileInfo &newFileInfo)
+void FileManager::addNewFile(QString &newFileInfo)
 {
     FileChecker newFile(newFileInfo);
     files.push_back(newFile);
@@ -18,7 +18,7 @@ void FileManager::startToObserve()
     while(true){
         qint64 choice;
         std::cout << "Input 1 - to check the states of your files / "
-                  << "2 - to exit" <<std::endl;
+                  << "Any - to exit" <<std::endl;
         std::cin >> choice;
         if(choice == 1){
             for(auto& file : files){
@@ -41,12 +41,9 @@ void FileManager::startToObserve()
                 }
             }
         }
-        else if(choice == 2){
+        else{
             std::cout << "Good bye!" << std::endl;
             return;
-        }
-        else{
-            std::cout << "Try again!!!" << std::endl;
         }
     }
 }

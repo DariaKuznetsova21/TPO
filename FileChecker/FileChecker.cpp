@@ -1,16 +1,17 @@
 #include "FileChecker.h"
 
-FileChecker::FileChecker(QFileInfo &file)
+FileChecker::FileChecker(QString &filePath)
 {
-    if(file.exists()){
+    QFileInfo newFile(filePath);
+    if(newFile.exists()){
         exist = true;
-        pathFile = file.filePath();
-        sizeFile = file.size();
-        lastModified = file.lastModified();
+        pathFile = newFile.filePath();
+        sizeFile = newFile.size();
+        lastModified = newFile.lastModified();
     }
     else{
         exist = false;
-        pathFile = "";
+        pathFile = filePath;
         sizeFile = 0;
         lastModified = QDateTime();
     }

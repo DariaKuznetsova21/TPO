@@ -24,8 +24,7 @@ int main(int argc, char *argv[])
             std::cout << "Input absolute path to file: ";
             QString newFile;
             cin >> newFile;
-            QFileInfo newFileInfo(newFile);
-            manager.addNewFile(newFileInfo);
+            manager.addNewFile(newFile);
         }
     }
     std::cout << "Start to observe" << std::endl;

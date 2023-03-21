@@ -13,7 +13,7 @@ class FileChecker
     QDateTime lastModified;
 public:
     FileChecker() = default;
-    FileChecker(QFileInfo& file);
+    FileChecker(QString &filePath);
     bool isExist();
     QString path();
     qint64 size();
