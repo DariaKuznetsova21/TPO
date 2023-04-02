@@ -18,7 +18,9 @@ public:
     QString path();
     qint64 size();
     QDateTime getLastTime();
-    void update(QFileInfo& file);
+    void setExist(const bool flag);
+    void setLastTime(QDateTime time);
+    void setNewSize(qint64 size);
 };
 
 #endif // FILECHECKER_H

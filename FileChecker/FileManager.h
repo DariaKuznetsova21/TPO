@@ -10,12 +10,12 @@ class FileManager : public QObject
 public:
     FileManager();
     void addNewFile(QString &newFileInfo);
-    void startToObserve();
+    void observe();
     bool changedExistance(QFileInfo& file, FileChecker& oldFile);
     bool changedFile(QFileInfo& file, FileChecker& oldFile);
 
 signals:
-    void existanceChanged(QFileInfo& file, FileChecker& oldFile);
+    void fileNotChanged(FileChecker& oldFile);
     void fileChanged(QFileInfo& file, FileChecker& oldFile);
 };
 

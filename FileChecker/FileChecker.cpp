@@ -37,10 +37,18 @@ QDateTime FileChecker::getLastTime()
     return lastModified;
 }
 
-void FileChecker::update(QFileInfo &file)
+void FileChecker::setExist(const bool flag)
 {
-    exist = file.exists();
-    pathFile = file.filePath();
-    sizeFile = file.size();
-    lastModified = file.lastModified();
+    exist = flag;
 }
+
+void FileChecker::setLastTime(QDateTime time)
+{
+    lastModified = time;
+}
+
+void FileChecker::setNewSize(qint64 size)
+{
+    sizeFile = size;
+}
+

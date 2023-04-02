@@ -12,8 +12,6 @@ int main(int argc, char *argv[])
     FileManager manager;
     qint64 choice;
 
-    std::cout<<"Hello, it's a FileChecker!"<<std::endl;
-
     while(true){
         std::cout<<"Do you want to add some file for observer?(1-yes/Any-no): ";
         cin >> choice;
@@ -28,7 +26,9 @@ int main(int argc, char *argv[])
         }
     }
     std::cout << "Start to observe" << std::endl;
-    manager.startToObserve();
+    while(true){
+        manager.observe();
+    }
 
     return a.exec();
 }
