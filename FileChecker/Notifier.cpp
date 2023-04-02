@@ -3,20 +3,24 @@
 void Notifier::changeFile(QFileInfo &file, FileChecker &oldFile)
 {
     if((oldFile.isExist()) && (!file.exists())){
-        std::cout << "File " << oldFile.path().toStdString() << " isn't exist!"<<std::endl;
         oldFile.setExist(false);
+        oldFile.setLastTime(QDateTime());
+        oldFile.setNewSize(0);
+        std::cout << "File " << oldFile.path().toStdString() << " isn't exist!"<<std::endl;
     }
     else if((!oldFile.isExist()) && (file.exists())){
+        oldFile.setExist(true);
+        oldFile.setLastTime(file.lastModified());
+        oldFile.setNewSize(file.size());
         std::cout << "File " << oldFile.path().toStdString() << " is exist with size " << oldFile.size()
                  << " bytes" << std::endl;
-        oldFile.setExist(true);
     }
 
     else {
-        std::cout << "File " << oldFile.path().toStdString() << " is exist with size " << oldFile.size()
-                  << " bytes and was changed!" << std::endl;
         oldFile.setLastTime(file.lastModified());
         oldFile.setNewSize(file.size());
+        std::cout << "File " << oldFile.path().toStdString() << " is exist with size " << oldFile.size()
+                  << " bytes and was changed!" << std::endl;
     }
 
 }
