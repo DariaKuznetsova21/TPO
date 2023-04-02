@@ -11,7 +11,6 @@ public:
     FileManager();
     void addNewFile(QString &newFileInfo);
     void observe();
-    bool changedExistance(QFileInfo& file, FileChecker& oldFile);
     bool changedFile(QFileInfo& file, FileChecker& oldFile);
 
 signals:
