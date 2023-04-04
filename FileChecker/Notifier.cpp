@@ -25,13 +25,24 @@ void Notifier::changeFile(QFileInfo &file, FileChecker &oldFile)
 
 }
 
-void Notifier::notChangeFile(FileChecker &oldFile)
+void Notifier::addFile(FileChecker &newFile)
 {
-    if(oldFile.isExist()){
-        std::cout << "File " << oldFile.path().toStdString() << " is exist with size " << oldFile.size()
+    if(newFile.isExist()){
+        std::cout << "File " << newFile.path().toStdString() << " is exist with size " << newFile.size()
                  << " bytes" << std::endl;
     }
     else{
-        std::cout << "File " << oldFile.path().toStdString() << " isn't exist!"<<std::endl;
+        std::cout << "File " << newFile.path().toStdString() << " isn't exist!"<<std::endl;
     }
 }
+
+//void Notifier::notChangeFile(FileChecker &oldFile)
+//{
+//    if(oldFile.isExist()){
+//        std::cout << "File " << oldFile.path().toStdString() << " is exist with size " << oldFile.size()
+//                 << " bytes" << std::endl;
+//    }
+//    else{
+//        std::cout << "File " << oldFile.path().toStdString() << " isn't exist!"<<std::endl;
+//    }
+//}

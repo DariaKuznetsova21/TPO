@@ -12,7 +12,7 @@ public:
     Notifier() = default;
 public slots:
     static void changeFile(QFileInfo& file, FileChecker& oldFile);
-    static void notChangeFile(FileChecker& oldFile);
+    static void addFile(FileChecker& oldFile);
 };
 
 #endif // NOTIFIER_H

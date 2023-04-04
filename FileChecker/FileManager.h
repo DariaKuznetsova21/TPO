@@ -2,9 +2,9 @@
 #define FILEMANAGER_H
 #include <Notifier.h>
 
-class FileManager : public QObject
+class FileManager : public QObject  //наследуется от qo
 {
-    Q_OBJECT
+    Q_OBJECT //определчяем макрос класса QO
 
     QVector<FileChecker> files;
 public:
@@ -14,7 +14,7 @@ public:
     bool changedFile(QFileInfo& file, FileChecker& oldFile);
 
 signals:
-    void fileNotChanged(FileChecker& oldFile);
+    void fileAdded(FileChecker& newFile);
     void fileChanged(QFileInfo& file, FileChecker& oldFile);
 };
 

@@ -4,7 +4,7 @@
 #include <QVector>
 #include <QDateTime>
 
-//Проверяет существование файла и его 
+//Проверяет существование файла и его изменения
 class FileChecker
 {
     bool exist;

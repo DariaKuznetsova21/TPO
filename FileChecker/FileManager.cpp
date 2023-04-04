@@ -4,13 +4,14 @@
 FileManager::FileManager()
 {
     connect(this, &FileManager::fileChanged, &Notifier::changeFile);
-     connect(this, &FileManager::fileNotChanged, &Notifier::notChangeFile);
+    connect(this, &FileManager::fileAdded, &Notifier::addFile);
 }
 
 void FileManager::addNewFile(QString &newFileInfo)
 {
     FileChecker newFile(newFileInfo);
     files.push_back(newFile);
+    fileAdded(newFile);
 }
 
 void FileManager::observe()
@@ -21,9 +22,9 @@ void FileManager::observe()
             fileChanged(checkFile, file);
         }
 
-        else {
-            fileNotChanged(file);
-        }
+//        else {
+//            fileNotChanged(file);
+//        }
     }
 }
 
