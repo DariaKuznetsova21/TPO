@@ -21,10 +21,6 @@ void FileManager::observe()
         if(changedFile(checkFile, file)){
             fileChanged(checkFile, file);
         }
-
-//        else {
-//            fileNotChanged(file);
-//        }
     }
 }
 

@@ -36,13 +36,4 @@ void Notifier::addFile(FileChecker &newFile)
     }
 }
 
-//void Notifier::notChangeFile(FileChecker &oldFile)
-//{
-//    if(oldFile.isExist()){
-//        std::cout << "File " << oldFile.path().toStdString() << " is exist with size " << oldFile.size()
-//                 << " bytes" << std::endl;
-//    }
-//    else{
-//        std::cout << "File " << oldFile.path().toStdString() << " isn't exist!"<<std::endl;
-//    }
-//}
+

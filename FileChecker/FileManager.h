@@ -1,6 +1,6 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
-#include <Notifier.h>
+#include "Notifier.h"
 
 class FileManager : public QObject  //наследуется от qo
 {
