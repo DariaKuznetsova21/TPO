@@ -11,8 +11,9 @@ class Notifier : public QObject
 public:
     Notifier() = default;
 public slots:
-    static void changeFile(QFileInfo& file, FileChecker& oldFile);
-    static void addFile(FileChecker& oldFile);
+    static void changeFile(FileChecker& oldFile);
+    static void FileExist(FileChecker& oldFile);
+    static void FileNotExist(FileChecker& oldFile);
 };
 
 #endif // NOTIFIER_H

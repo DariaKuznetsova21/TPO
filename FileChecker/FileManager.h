@@ -4,7 +4,7 @@
 
 class FileManager : public QObject  //наследуется от qo
 {
-    Q_OBJECT //определчяем макрос класса QO
+    Q_OBJECT
 
     QVector<FileChecker> files;
 public:
@@ -14,8 +14,9 @@ public:
     bool changedFile(QFileInfo& file, FileChecker& oldFile);
 
 signals:
-    void fileAdded(FileChecker& newFile);
-    void fileChanged(QFileInfo& file, FileChecker& oldFile);
+    void fileExist(FileChecker& file);
+    void fileNotExist(FileChecker& file);
+    void fileChanged(FileChecker& file);
 };
 
 #endif // FILEMANAGER_H
