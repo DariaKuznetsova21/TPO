@@ -7,11 +7,12 @@ void Notifier::FileNotExist(FileChecker &file)
 void Notifier::FileExist(FileChecker &file)
 {
     std::cout << "File " << file.path().toStdString() << " is exist with size " << file.size()
-             << " bytes" << std::endl;
+             << " bytes, " << file.getLastTime().toString("hh:mm:ss dd.MM.yyyy").toStdString() << " last modified time" <<std::endl;
 }
 void Notifier::changeFile(FileChecker &file)
 {
     std::cout << "File " << file.path().toStdString() << " is exist with size " << file.size()
-              << " bytes and was changed!" << std::endl;
+              << " bytes and was changed, " << file.getLastTime().toString("hh:mm:ss dd.MM.yyyy").toStdString()
+              << " last modified time" <<std::endl;
 }
 

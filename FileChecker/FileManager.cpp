@@ -22,7 +22,7 @@ void FileManager::addNewFile(QString &newFileInfo)
 
 void FileManager::observe()
 {
-    for(auto& file : files){ //
+    for(auto& file : files){
         QFileInfo checkFile(file.path());
         if((file.isExist()) && (!checkFile.exists())){
             file.setExist(false);
