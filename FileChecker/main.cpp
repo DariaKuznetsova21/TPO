@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
     QString newFile1 = "C://files/file1.txt";
     manager.addNewFile(newFile1);
 
+    manager.deleteFile(newFile1);
+
     QString newFile2 = "C://files/file.docx";
     manager.addNewFile(newFile2);
 

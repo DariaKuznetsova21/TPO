@@ -42,3 +42,12 @@ void FileManager::observe()
         }
     }
 }
+
+void FileManager::deleteFile(QString &FileName)
+{
+    for(int i = 0; i < files.size(); i++){
+        if(files[i].path() == FileName){
+            files.remove(i);
+        }
+    }
+}
