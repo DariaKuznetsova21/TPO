@@ -16,7 +16,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    cpp/class_unit.h \
+    cpp/method_unit.h \
+    cpp/print_operator_unit.h \
     class_unit.h \
     method_unit.h \
     print_operator_unit.h \
     unit.h
+

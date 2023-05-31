@@ -12,10 +12,10 @@ public:
 	{
 
 	}
-    std::string compile( unsigned int level = 0 ) const {
-        return generateShift( level ) + "printf( \"" + text_ + "\" );\n";
-    }
-private:
+
+	virtual ~PrintOperatorUnit() = default; // обьявляем деструктор по умолчанию как виртуальный, для корректного вызова деструкторов конкретных языков
+
+protected:
 	std::string text_; // текст, который должен вывести данный оператор
 };
 

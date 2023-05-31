@@ -12,46 +12,25 @@ public:
     {
         PUBLIC,
         PROTECTED,
-        PRIVATE
+        PRIVATE,
+        INTERNAL,
+        PROTECTED_INTERNAL,
+        PRIVATE_PROTECTED
     };
-    static const std::vector< std::string > ACCESS_MODIFIERS;
-public:
-    explicit ClassUnit( const std::string& name ) : name_( name ) {
-        fields_.resize( ACCESS_MODIFIERS.size() );
-    }
-    void add( const std::shared_ptr< Unit >& unit, Flags flags ) {
-        int accessModifier = PRIVATE;
-        if( flags < ACCESS_MODIFIERS.size() ) {
-            accessModifier = flags;
-        }
-        fields_[ accessModifier ].push_back( unit );
-    }
-    std::string compile( unsigned int level = 0 ) const
-    {
-        std::string result = generateShift( level ) + "class " + name_ + " {\n";
-        for( size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i ) {
-            if( fields_[ i ].empty() ) {
-                continue;
-            }
-            result += ACCESS_MODIFIERS[ i ] + ":\n";
-            for( const auto& f : fields_[ i ] ) {
-                result += f->compile( level + 1 );
-            }
-            result += "\n";
-        }
-        result += generateShift( level ) + "};\n";
-        return result;
-    }
 
-private:
+public:
+    explicit ClassUnit(const std::string &name, size_t fields_size)// ПОСМОТРЕТЬ!!!!!!
+        : name_(name), fields_(fields_size) // количество поддерживаемых модификаторов доступа конкретным языком, на этапе компиляции процесс происоходит до тела конструктора 
+    {}
+
+    virtual ~ClassUnit() = default; // обьявляем деструктор по умолчанию как виртуальный, для корректного вызова деструкторов конкретных языков
+
+protected:
     std::string name_; // имя создаваемого класса
 
     using Fields = std::vector<std::shared_ptr<Unit>>; // тип данных для набора полей класса, 1 филдс уже вектор
 
     std::vector<Fields> fields_; // каждому модификатору доступа соотвествует свой набор полей
 };
-
-const std::vector< std::string > ClassUnit::ACCESS_MODIFIERS = { "public",
-"protected", "private" };
 
 #endif // CLASS_UNIT_H

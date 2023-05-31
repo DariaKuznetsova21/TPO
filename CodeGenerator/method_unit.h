@@ -13,6 +13,7 @@ public:
 		STATIC = 1,
 		CONST = 1 << 1, // используются битовые флаги, то есть они могут быть установлены независимо, например STATIC | CONST
 		VIRTUAL = 1 << 2,
+		FINAL = 1 << 3
 	};
 
 public:
@@ -22,30 +23,19 @@ public:
 		, flags_(flags)
 	{}
 
-    void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) {
-        body_.push_back( unit );
-    }
+	virtual ~MethodUnit() = default; // обьявляем деструктор по умолчанию как виртуальный, для корректного вызова деструкторов конкретных языков
 
-    std::string compile( unsigned int level = 0 ) const {
-        std::string result = generateShift( level );
-        if( flags_ & STATIC ) {
-            result += "static ";
-        } else if(flags_ & VIRTUAL ) {
-            result += "virtual ";
-        }
-        result += return_type_ + " ";
-        result += name_ + "()";
-        if( flags_ & CONST ) {
-            result += " const";
-        }
-        result += " {\n";
-        for( const auto& b : body_ ) {
-            result += b->compile( level + 1 );
-        }
-        result += generateShift( level ) + "}\n";
-        return result;
-        }
-private:
+	void Add(const std::shared_ptr<Unit> &unit, Flags /* flags */ = 0 )
+	{
+		if (unit == nullptr)
+		{
+			throw std::runtime_error("The unit is nullptr.");
+		}
+
+		body_.push_back(unit); // данная языковая конструкция не классифицирует создаваемые в ней конструкции, по этому флаги не используются
+	}
+
+protected:
 	std::string name_; // имя метода
 	std::string return_type_; // тип возвращаемого методом значения
 
